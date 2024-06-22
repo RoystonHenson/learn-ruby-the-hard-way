@@ -1,11 +1,20 @@
-days = 'Mon Tue Wed Thu Fri Sat Sun'
-months = "\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug"
-puts "Here are the days: #{days}"
-puts "Here are the months: #{months}"
+days = '   Mon Tue Wed Thu Fri Sat Sun'
+months = %{
+                        Jan
+                        Feb
+                        Mar
+                        Apr
+                        May
+                        Jun
+                        Jul
+                        Aug
+}
+puts %{  Here are the days: #{days}
+  Here are the months: #{months}
+}
 
-puts %q{
-    There's something going on here.
-    With this weird quote
-    We''ll be able to type as much as we like.
-    Evern 4 lines if we want, or 5, or 6.
+puts %{  There's something going on here.
+  With this weird quote.
+  We'll be able to type as much as we like.
+  Even 4 lines if we want, or 5, or 6.
 }
