@@ -5,8 +5,9 @@ def gold_room
     choice = $stdin.gets.chomp
 
     if (choice =~ /(0|1|2|3|4|5|6|7|8|9)/) != 0
-        dead('Man, learn to type a number.')
-    else
+        puts 'Man, learn to type a number.'
+        gold_room
+        else
         if choice.to_i < 50
             puts "Nice, you're not greedy, you win!"
             exit(0)
