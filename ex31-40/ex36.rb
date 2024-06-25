@@ -24,7 +24,7 @@ def you_win
     """
     exit(0)
 end
-=begin
+
 def starting_room
     puts "Announcer:\n\t\"Welome to the challenge rooms!\n\t Your task is to escape here alive!\n\t Good luck!\""
     puts "\n\tBefore you are two doors;\n\ta pristine-looking door on the left\n\tand a shoddy one on the right."
@@ -101,7 +101,7 @@ def axe_room
         you_lose('Wow, that was messy.')
     end
 end
-=end
+
 def ravine
     puts "\n\t*There is a ravine in front of you with a rope and plank\n\t bridge crossing it.*"
     while true
@@ -120,7 +120,7 @@ def ravine
                 elsif @choice.include?('vine')
                     puts "\n\t*Surprisingly, the vines are actually pretty strong and \n\t carry you across the ravine easily.*"
                     puts "\n\t You leave this room through another door.*"
-                    you_win
+                    final_room_intro
                 else
                     puts "\n You'll have to pick one unless you want to be stuck here forever."
                 end
@@ -131,10 +131,38 @@ def ravine
     end
 end
 
-# final room
+def final_room_intro
+    puts "\n\t*You find yourself in a small room with a large stone door.\n\t There are small blocks on the door with letters"
+    puts "\t that read 'MENOP SSEEA'(note there is one space). It seems like you are\n\t able to push the buttons."
+    final_room_puzzle
+end
 
-# delete to run code
-#starting_room
-ravine
+def final_room_puzzle
+    @answer = "open sesame"
+    @user_input = []
+    while true
+        puts "\nWhich letter do you press?"
+        get_choice
+        @user_input << @choice
+        p @user_input
+        if @user_input[0] == 'o' || 'open sesame'
+            puts "\n*The stones light up and hum.*"
+            if (@answer =~ /#{@user_input.join}/) == 0 && @user_input.join != @answer
+                puts "\nWhich letter do you press next?"
+            elsif @answer == @user_input.join
+                puts "\nThere is a loud rumble as the door opens!"
+                you_win
+            else
+                puts "\n*The stones dim and go silent. You must start again.*"
+                final_room_puzzle
+            end
+        else
+            puts "\n*Nothing happens. Try again.*"
+            final_room_puzzle
+        end
+    end
+end
+
+final_room_intro
 
  
