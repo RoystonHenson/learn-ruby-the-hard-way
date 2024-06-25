@@ -13,8 +13,17 @@ def you_lose(event)
 end
 
 def you_win
-    puts 'What a legend! RAHHH!'
-    exit(0)
+    puts ""
+    puts"""\n\tWhat a legend! RAHHH!    __
+                                / (|
+                               (   :
+                           _____\\   \\  __
+                          (______)   `|
+                         (______)|    |
+                          (______).___|
+                           (_____)___.|__
+"""
+    #exit(0)
 end
 
 def starting_room
@@ -101,3 +110,5 @@ end
 # delete to run code
 #starting_room
 axe_room
+
+ 
