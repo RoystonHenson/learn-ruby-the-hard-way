@@ -13,7 +13,6 @@ def you_lose(event)
 end
 
 def you_win
-    puts ""
     puts"""\n\tWhat a legend! RAHHH!    __
                                 / (|
                                (   :
@@ -22,10 +21,10 @@ def you_win
                          (______)|    |
                           (______).___|
                            (_____)___.|__
-"""
-    #exit(0)
+    """
+    exit(0)
 end
-
+=begin
 def starting_room
     puts "Announcer:\n\t\"Welome to the challenge rooms!\n\t Your task is to escape here alive!\n\t Good luck!\""
     puts "\n\tBefore you are two doors;\n\ta pristine-looking door on the left\n\tand a shoddy one on the right."
@@ -97,18 +96,45 @@ def axe_room
     get_choice
     if @choice.include?('average')
         puts "\n\t*Whew, that was close! But you've made it.! You head through\n\t into the next room*"
-        you_win
+        ravine
     else
         you_lose('Wow, that was messy.')
     end
 end
-
-# ravine
+=end
+def ravine
+    puts "\n\t*There is a ravine in front of you with a rope and plank\n\t bridge crossing it.*"
+    while true
+        puts "\nDo you cross the bridge or look around first?"
+        get_choice
+        if @choice.include?('cross') || @choice.include?('bridge')
+            you_lose("You make it halfway across the bridge before one of main ropes\n\t      give way, sending you plumetting into the ravine.")
+        elsif @choice.include?('look')
+            while true
+                puts "\n\t*After looking around you find a spring board seemingly set up\n\t to propel someone over the ravine."
+                puts "\t You also find some dodgy looking vines.*"
+                puts "\nDo you try the board or the vines?"
+                get_choice
+                if @choice.include?('spring') || @choice.include?('board')
+                    you_lose("You take a run up and jump onto the board, sending\n\t      yourself high up into the air and then straight into the ravine.\n\t      Why did you think that would work? ")        
+                elsif @choice.include?('vine')
+                    puts "\n\t*Surprisingly, the vines are actually pretty strong and \n\t carry you across the ravine easily.*"
+                    puts "\n\t You leave this room through another door.*"
+                    you_win
+                else
+                    puts "\n You'll have to pick one unless you want to be stuck here forever."
+                end
+            end
+        else
+            you_lose("Afraid to cross the ravine, you end up here until your last days.")
+        end
+    end
+end
 
 # final room
 
 # delete to run code
 #starting_room
-axe_room
+ravine
 
  
