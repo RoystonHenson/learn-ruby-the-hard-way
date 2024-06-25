@@ -66,7 +66,7 @@ def trap_door_room
                         get_choice
                         if @choice == 'r'
                             puts "\n\t*With a huge sign of relief, you step off the tiles. You made it!\n\t You open the door and enter the next room.*"
-                            swinging_axe_room
+                            axe_room
                         else
                             you_lose("The tile explodes sending you flying into the air and back\n\t      down into the gaping maw below!")
                         end
@@ -81,11 +81,23 @@ def trap_door_room
     end
 end
 
-# swinging axe room
+def axe_room
+    puts "\n\t*Before you is a combination of axes swinging from left-to-right and \n\t right-to-left!"
+    puts "\t After taking some time to analyse the movement of the axes you think \n\t you've figured out howto get through.*"
+    puts "\nYou can go slowly, average-speed or quickly. Which do you choose?"
+    get_choice
+    if @choice.include?('average')
+        puts "\n\t*Whew, that was close! But you've made it.! You head through\n\t into the next room*"
+        you_win
+    else
+        you_lose('Wow, that was messy.')
+    end
+end
 
 # ravine
 
 # final room
 
 # delete to run code
-starting_room
+#starting_room
+axe_room
